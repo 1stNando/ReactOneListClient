@@ -2,28 +2,26 @@ import React, { useEffect, useState } from 'react'
 import logo from '/src/logo.svg'
 import axios from 'axios'
 
+// This is a data driven React App.
 export function App() {
   // Step 2, after static implementation, set the state.
-  const [todoItems, setTodoItems] = useState([
-    { id: 1, text: 'Do a thing', complete: false },
-    { id: 2, text: 'Do something else', complete: false },
-    { id: 3, text: 'Do a third thing', complete: false },
-    { id: 4, text: 'Remind me about the important thing', complete: false },
-    {
-      id: 5,
-      text: 'The important things are the important things',
-      complete: false,
-    },
-  ])
+  const [todoItems, setTodoItems] = useState([])
 
-  useEffect(async function () {
-    console.log('this runs when the component first mounts')
-    const response = await axios.get(
-      'https://one-list-api.herokuapp.com/items?access'
-    )
-    if (response.status === 200) {
-      console.log(response.data)
+  // useEffect has a non-async function
+  useEffect(function () {
+    // Our async function inside!
+    async function fetchListOfItems() {
+      console.log('this runs when the component first mounts')
+      const response = await axios.get(
+        'https://one-list-api.herokuapp.com/items?access_token=cohort26'
+      )
+
+      if (response.status === 200) {
+        setTodoItems(response.data)
+      }
     }
+    //
+    fetchListOfItems()
   }, [])
 
   return (
