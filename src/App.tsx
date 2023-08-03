@@ -45,6 +45,16 @@ export function App() {
     )
     if (response.status === 201) {
       console.log(response.data)
+      // Gets the response data ( a todo item)
+      const newTodo = response.data
+
+      // The ... is a spread operator. It takes the items in todoItems and spreads the items out as if they were in place. To append item to the array.
+      // Makes a new array of all the old todo
+      // items (spread) with the new todo at the end of the array.
+      const newTodoItems = [...todoItems, newTodo]
+
+      // Updates the array of todo items.
+      setTodoItems(newTodoItems)
     }
   }
 
