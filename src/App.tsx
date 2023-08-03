@@ -46,18 +46,15 @@ export function App() {
       body
     )
     if (response.status === 201) {
-      console.log(response.data)
-      // Gets the response data ( a todo item)
-      const newTodo = response.data
+      const response = await axios.get(
+        'https://one-list-api.herokuapp.com/items?access_token=cohort25'
+      )
 
-      // The ... is a spread operator. It takes the items in todoItems and spreads the items out as if they were in place. To append item to the array.
-      // Makes a new array of all the old todo
-      // items (spread) with the new todo at the end of the array.
-      // Appending is the fastest way to re-render the API.
-      const newTodoItems = [...todoItems, newTodo]
-
-      // Updates the array of todo items.
-      setTodoItems(newTodoItems)
+      if (response.status === 200) {
+        setTodoItems(response.data)
+        // Adds ability for input text to go away after pressing enter.New item and clear.
+        setNewTodoText('')
+      }
     }
   }
 
