@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react'
 import logo from '/src/logo.svg'
 import axios from 'axios'
 
-// This is a data driven React App.
+type TodoItemType = {
+  id: number
+  text: string
+  complete: boolean
+  update_at: Date
+  completed_at: Date
+}
+
 export function App() {
   // Step 2, after static implementation, set the state.
-  const [todoItems, setTodoItems] = useState([])
+  const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
 
   // useEffect has a non-async function
   useEffect(function () {
