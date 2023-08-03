@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '/src/logo.svg'
 
 export function App() {
@@ -14,6 +14,11 @@ export function App() {
       complete: false,
     },
   ])
+
+  useEffect(function () {
+    console.log('this runs when the component first mounts')
+  }, [])
+
   return (
     <div className="app">
       <header>
