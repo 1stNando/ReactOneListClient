@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from '/src/logo.svg'
+import axios from 'axios'
 
 export function App() {
   // Step 2, after static implementation, set the state.
@@ -15,8 +16,14 @@ export function App() {
     },
   ])
 
-  useEffect(function () {
+  useEffect(async function () {
     console.log('this runs when the component first mounts')
+    const response = await axios.get(
+      'https://one-list-api.herokuapp.com/items?access'
+    )
+    if (response.status === 200) {
+      console.log(response.data)
+    }
   }, [])
 
   return (
