@@ -8,6 +8,11 @@ export function App() {
     { id: 2, text: 'Do something else', complete: false },
     { id: 3, text: 'Do a third thing', complete: false },
     { id: 4, text: 'Remind me about the important thing', complete: false },
+    {
+      id: 5,
+      text: 'The important things are the important things',
+      complete: false,
+    },
   ])
   return (
     <div className="app">
@@ -16,11 +21,9 @@ export function App() {
       </header>
       <main>
         <ul>
-          <li>Do a thing</li>
-          <li>Do something else</li>
-          <li>Do a third thing</li>
-          <li>Remind me about the important thing</li>
-          <li>The important things are the important things</li>
+          {todoItems.map(function (todoItem) {
+            return <li key={todoItem.id}>{todoItem.text}</li>
+          })}
         </ul>
         <form>
           <input type="text" placeholder="Whats up?" />
