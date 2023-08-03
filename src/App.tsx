@@ -27,6 +27,8 @@ export function App() {
 
       if (response.status === 200) {
         setTodoItems(response.data)
+        // Adds ability for input text to go away after pressing enter.New item and clear.
+        setNewTodoText('')
       }
     }
     //
@@ -51,6 +53,7 @@ export function App() {
       // The ... is a spread operator. It takes the items in todoItems and spreads the items out as if they were in place. To append item to the array.
       // Makes a new array of all the old todo
       // items (spread) with the new todo at the end of the array.
+      // Appending is the fastest way to re-render the API.
       const newTodoItems = [...todoItems, newTodo]
 
       // Updates the array of todo items.
