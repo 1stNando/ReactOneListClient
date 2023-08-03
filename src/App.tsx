@@ -1,6 +1,14 @@
-import React from 'react'
-import logo from './images/sdg-logo.png'
+import React, { useState } from 'react'
+import logo from '/src/logo.svg'
+
 export function App() {
+  // Step 2, after static implementation, set the state.
+  const [todoItems, setTodoItems] = useState([
+    { id: 1, text: 'Do a thing', complete: false },
+    { id: 2, text: 'Do something else', complete: false },
+    { id: 3, text: 'Do a third thing', complete: false },
+    { id: 4, text: 'Remind me about the important thing', complete: false },
+  ])
   return (
     <div className="app">
       <header>
@@ -22,7 +30,7 @@ export function App() {
         <p>
           <img src={logo} height="42" alt="logo" />
         </p>
-        <p>&copy; 2020 Suncoast Developers Guild</p>
+        <p>React project by &copy; 2020 Suncoast Developers Guild</p>
       </footer>
     </div>
   )
