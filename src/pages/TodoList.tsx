@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { TodoItem } from './TodoItem'
+import { TodoItem } from '../components/TodoItem'
 import { TodoItemType } from '../App'
 
 export function TodoList() {
