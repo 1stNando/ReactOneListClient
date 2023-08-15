@@ -89,7 +89,7 @@ export function App() {
         >
           <input
             type="text"
-            placeholder="Whats up?"
+            placeholder="What's on your mind?"
             value={newTodoText}
             onChange={function (event) {
               setNewTodoText(event.target.value)
