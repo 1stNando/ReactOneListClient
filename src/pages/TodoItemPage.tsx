@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { TodoItemType } from '../App'
 import axios from 'axios'
+import { TodoItem } from '../components/TodoItem'
 
 export function TodoItemPage() {
   // Define the structure of the params. It is an object with one Key named id which is a string.
 
   const params = useParams<{ id: string }>()
 
-  const [todoItems, setTodoItems] = useState<TodoItemType>({
+  const [todoItem, setTodoItem] = useState<TodoItemType>({
     id: undefined,
     text: '',
     complete: false,
@@ -23,7 +24,7 @@ export function TodoItemPage() {
           'https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort25'
         )
         if (response.status === 200) {
-          setTodoItems(response.data)
+          setTodoItem(response.data)
         }
       }
       loadItems()
@@ -31,5 +32,9 @@ export function TodoItemPage() {
     [params.id]
   )
 
-  return <p>This would be the details of item for {params.id}!</p>
+  return (
+    <div>
+      <p className={todoItem.complete ? 'complete' : ''}>{todoItem.text}</p>
+    </div>
+  )
 }

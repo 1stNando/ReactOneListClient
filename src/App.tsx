@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg'
 import { TodoList } from './pages/TodoList'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { TodoItemPage } from './pages/TodoItemPage'
 
 export type TodoItemType = {
@@ -19,7 +19,7 @@ export function App() {
         <h1>One List</h1>
       </header>
       <main>
-        <Switch>
+        <Routes>
           <Route path="/">
             <TodoList />
           </Route>
@@ -29,7 +29,7 @@ export function App() {
           <Route path="*">
             <p>Ooops that URL not found! 404 </p>
           </Route>
-        </Switch>
+        </Routes>
       </main>
       <footer>
         <p>
