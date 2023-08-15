@@ -2,13 +2,14 @@ import React from 'react'
 import logo from './logo.svg'
 import { TodoList } from './pages/TodoList'
 import { Route, Switch } from 'react-router-dom'
+import { TodoItemPage } from './pages/TodoItemPage'
 
 export type TodoItemType = {
-  id: number
+  id: number | undefined
   text: string
   complete: boolean
-  update_at: Date
-  completed_at: Date
+  updated_at: Date | undefined
+  created_at: Date | undefined
 }
 
 export function App() {
@@ -21,6 +22,9 @@ export function App() {
         <Switch>
           <Route path="/">
             <TodoList />
+          </Route>
+          <Route path="/items/:id">
+            <TodoItemPage />
           </Route>
           <Route path="*">
             <p>Ooops that URL not found! 404 </p>
