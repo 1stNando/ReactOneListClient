@@ -12,6 +12,24 @@ export type TodoItemType = {
 }
 
 export function App() {
+  return (
+    <div className="app">
+      <header>
+        <h1>One List</h1>
+      </header>
+      <main>
+        <TodoList />
+      </main>
+      <footer>
+        <p>
+          <img src={logo} height="42" alt="logo" />
+        </p>
+        <p>React project by &copy; 2020 Suncoast Developers Guild</p>
+      </footer>
+    </div>
+  )
+}
+function TodoList() {
   // Step 2, after static implementation, set the state.
   const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
   // 2nd state to set. Manages input text from user.
@@ -62,47 +80,36 @@ export function App() {
   }
 
   return (
-    <div className="app">
-      <header>
-        <h1>One List</h1>
-      </header>
-      <main>
-        <ul>
-          {todoItems.map(function (todoItem) {
-            return (
-              <TodoItem
-                key={todoItem.id}
-                todoItem={todoItem}
-                reloadItems={loadAllTheItems}
-              />
-            )
-          })}
-        </ul>
-        {/* <Form> enables on submit "enter". Subtle but important for input. All forms by default want to be submitted. We need somewhere to submit to... */}
-        <form
-          onSubmit={function (event) {
-            // This says, please form don't do your usual behavior to avoid re-render.
-            // I will tell you what to do
-            event.preventDefault()
-            handleCreateNewTodoItem()
+    <React.Fragment>
+      <ul>
+        {todoItems.map(function (todoItem) {
+          return (
+            <TodoItem
+              key={todoItem.id}
+              todoItem={todoItem}
+              reloadItems={loadAllTheItems}
+            />
+          )
+        })}
+      </ul>
+      {/* <Form> enables on submit "enter". Subtle but important for input. All forms by default want to be submitted. We need somewhere to submit to... */}
+      <form
+        onSubmit={function (event) {
+          // This says, please form don't do your usual behavior to avoid re-render.
+          // I will tell you what to do
+          event.preventDefault()
+          handleCreateNewTodoItem()
+        }}
+      >
+        <input
+          type="text"
+          placeholder="What's on your mind?"
+          value={newTodoText}
+          onChange={function (event) {
+            setNewTodoText(event.target.value)
           }}
-        >
-          <input
-            type="text"
-            placeholder="What's on your mind?"
-            value={newTodoText}
-            onChange={function (event) {
-              setNewTodoText(event.target.value)
-            }}
-          />
-        </form>
-      </main>
-      <footer>
-        <p>
-          <img src={logo} height="42" alt="logo" />
-        </p>
-        <p>React project by &copy; 2020 Suncoast Developers Guild</p>
-      </footer>
-    </div>
+        />
+      </form>
+    </React.Fragment>
   )
 }
