@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '/src/logo.svg'
 import axios from 'axios'
-import { TodoItem } from './TodoItem'
+import { TodoItem } from './components/TodoItem'
 
 export type TodoItemType = {
   id: number
