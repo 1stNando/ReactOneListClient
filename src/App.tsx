@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import logo from '/src/logo.svg'
 import axios from 'axios'
+import { TodoItem } from './TodoItem'
 
-type TodoItemType = {
+export type TodoItemType = {
   id: number
   text: string
   complete: boolean
@@ -16,11 +17,9 @@ export function App() {
   // 2nd state to set. Manages input text from user.
   const [newTodoText, setNewTodoText] = useState('')
 
-  // useEffect has a non-async function, Loads our data ONCE.
-  useEffect(function () {
-    // Our async function inside!
+  function loadAllTheItems() {
+    // Our async function inside!Coffee16oz
     async function fetchListOfItems() {
-      console.log('this runs when the component first mounts')
       const response = await axios.get(
         'https://one-list-api.herokuapp.com/items?access_token=cohort25'
       )
@@ -31,10 +30,13 @@ export function App() {
         setNewTodoText('')
       }
     }
-    //
     fetchListOfItems()
-    // Don't forget empty array!
-  }, [])
+  }
+
+  // Don't forget empty array!
+
+  // useEffect has a non-async function, Loads our data ONCE.
+  useEffect(loadAllTheItems, [])
 
   async function handleCreateNewTodoItem() {
     const body = {
@@ -46,6 +48,7 @@ export function App() {
       body
     )
     if (response.status === 201) {
+      // This illustrates how to get data back completely instead of appending.
       const response = await axios.get(
         'https://one-list-api.herokuapp.com/items?access_token=cohort25'
       )
@@ -67,12 +70,11 @@ export function App() {
         <ul>
           {todoItems.map(function (todoItem) {
             return (
-              <li
+              <TodoItem
                 key={todoItem.id}
-                className={todoItem.complete ? 'completed' : undefined}
-              >
-                {todoItem.text}
-              </li>
+                todoItem={todoItem}
+                reloadItems={loadAllTheItems}
+              />
             )
           })}
         </ul>
