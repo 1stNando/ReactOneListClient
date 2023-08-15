@@ -27,7 +27,7 @@ export function App() {
             <TodoItemPage />
           </Route>
           <Route path="*">
-            <p>Ooops that URL not found! 404 </p>
+            <p>Ooops, that URL not found! 404 </p>
           </Route>
         </Routes>
       </main>
