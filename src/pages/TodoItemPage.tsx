@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router'
 import { TodoItemType } from '../App'
+import { Link } from 'react-router-dom'
 
 export function TodoItemPage() {
   // Define the structure of the params. It is an object with one Key named id which is a string.
@@ -45,6 +46,9 @@ export function TodoItemPage() {
 
   return (
     <div>
+      <p>
+        <Link to="/"></Link>Home
+      </p>
       <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
       <p>Created: {todoItem.created_at}</p>
       <p>Updated: {todoItem.updated_at}</p>
