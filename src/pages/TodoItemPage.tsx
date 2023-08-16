@@ -47,7 +47,7 @@ export function TodoItemPage() {
   return (
     <div>
       <p>
-        <Link to="/"></Link>Home
+        <Link to="/">Home</Link>
       </p>
       <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
       <p>Created: {todoItem.created_at}</p>
