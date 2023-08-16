@@ -23,6 +23,7 @@ export function TodoItem({
   return (
     <li className={complete ? 'completed' : ''} onClick={toggleCompleteStatus}>
       {text}
+      <a href={`/items/${id}`}>Show</a>
     </li>
   )
 }

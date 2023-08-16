@@ -32,7 +32,7 @@ export function TodoItemPage() {
     [params.id]
   )
 
-  function deleteTodoItem() {
+  async function deleteTodoItem() {
     const response = await axios.delete(
       `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort25`
     )
