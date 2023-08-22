@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg'
-import { TodoList } from './pages/TodoList'
 import { Route, Routes } from 'react-router-dom'
+import { TodoList } from './pages/TodoList'
 import { TodoItemPage } from './pages/TodoItemPage'
 
 export type TodoItemType = {
@@ -35,7 +35,7 @@ export function App() {
         <p>
           <img src={logo} height="42" alt="logo" />
         </p>
-        <p>React project by &copy; 2020 Suncoast Developers Guild</p>
+        <p>React project by &copy; and Fernando.</p>
       </footer>
     </div>
   )
