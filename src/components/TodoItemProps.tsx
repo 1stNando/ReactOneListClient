@@ -25,7 +25,7 @@ export function TodoItem({
 
   return (
     <li className={complete ? 'completed' : undefined}>
-      <span onClick={toggleCompleteStatus}>{text}</span>
+      <button onClick={toggleCompleteStatus}>{text}</button>
 
       <Link to={`/items/${id}`}>Show</Link>
     </li>

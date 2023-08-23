@@ -20,15 +20,15 @@ export function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<TodoList />}>
-            <TodoList />
-          </Route>
-          <Route path="/items/:id" element={<TodoItemPage />}>
-            <TodoItemPage />
-          </Route>
-          <Route path="*">
-            <p>Oops, that URL not found! 404 </p>
-          </Route>
+          <>
+            <Route path="/" element={<TodoList />}></Route>
+            <Route path="/items/:id" element={<TodoItemPage />}>
+              Details of an item here!
+            </Route>
+            <Route path="*">
+              <p>Oops, that URL not found! 404 </p>
+            </Route>
+          </>
         </Routes>
       </main>
       <footer>

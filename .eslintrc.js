@@ -19,12 +19,12 @@ module.exports = {
     node: true,
   },
   extends: [
-    //'eslint:recommended',
-    //'plugin:react/recommended',
-    //'plugin:react-hooks/recommended',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     // Uncomment this next line if you want to check your code for accessibility issues!
-    // 'plugin:jsx-a11y/recommended',
-    //'prettier', // Make sure this is always the last element in the array.
+    'plugin:jsx-a11y/recommended',
+    'prettier', // Make sure this is always the last element in the array.
   ],
   plugins: [],
   rules: {
