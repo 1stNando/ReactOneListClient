@@ -39,16 +39,18 @@ export function TodoList() {
       body
     )
     if (response.status === 201) {
-      // This illustrates how to get data back completely instead of appending.
-      const response = await axios.get(
-        'https://one-list-api.herokuapp.com/items?access_token=cohort25'
-      )
+      loadAllTheItems()
 
-      if (response.status === 200) {
-        setTodoItems(response.data)
-        // Adds ability for input text to go away after pressing enter.New item and clear.
-        setNewTodoText('')
-      }
+      // This illustrates how to get data back completely instead of appending.
+      // const response = await axios.get(
+      //   'https://one-list-api.herokuapp.com/items?access_token=cohort25'
+      // )
+
+      // if (response.status === 200) {
+      //   setTodoItems(response.data)
+      //   // Adds ability for input text to go away after pressing enter.New item and clear.
+      //   setNewTodoText('')
+      // }
     }
   }
 
