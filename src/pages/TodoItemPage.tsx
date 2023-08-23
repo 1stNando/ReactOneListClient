@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import { TodoItemType } from '../App'
 import { Link } from 'react-router-dom'
 
 export function TodoItemPage() {
   // Define the structure of the params. It is an object with one Key named id which is a string.
-  const history = useHistory()
+  const history = useNavigate()
 
   const params = useParams<{ id: string }>()
 
@@ -22,7 +22,7 @@ export function TodoItemPage() {
     function () {
       async function loadItems() {
         const response = await axios.get(
-          'https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort25'
+          `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort25`
         )
         if (response.status === 200) {
           setTodoItem(response.data)
@@ -40,8 +40,11 @@ export function TodoItemPage() {
 
     if (response.status === 204) {
       // Redirect to the homepage
-      history.push('/')
+      history('/')
     }
+  }
+  if (!todoItem.id) {
+    return null
   }
 
   return (

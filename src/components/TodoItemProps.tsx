@@ -13,12 +13,14 @@ export function TodoItem({
   reloadItems,
 }: TodoItemProps) {
   async function toggleCompleteStatus() {
-    await axios.put(
+    const response = await axios.put(
       `https://one-list-api.herokuapp.com/items/${id}?access_token=cohort42`,
       { item: { complete: !complete } }
     )
 
-    reloadItems()
+    if (response.status === 200) {
+      reloadItems()
+    }
   }
 
   return (

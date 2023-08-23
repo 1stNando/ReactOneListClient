@@ -17,23 +17,16 @@
     "useTabs": false
   },
   "dependencies": {
-    "axios": "^1.4.0",
+    "axios": "^0.26.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-query": "^3.39.3",
-    "react-router": "^6.15.0",
-    "react-router-dom": "^6.15.0"
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-query": "^1.2.9",
-=======
     "@types/node": "^20.5.3",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^17.0.20",
->>>>>>> 258f716 (Finally FIXED error in Node.modules packages were incorrect.)
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/parser": "^4.30.0",

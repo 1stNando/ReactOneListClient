@@ -20,10 +20,10 @@ export function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<TodoList />}>
             <TodoList />
           </Route>
-          <Route path="/items/:id">
+          <Route path="/items/:id" element={<TodoItemPage />}>
             <TodoItemPage />
           </Route>
           <Route path="*">
