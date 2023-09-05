@@ -21,13 +21,13 @@ export function App() {
       <main>
         <Routes>
           <React.Fragment>
-            <Route path="/" element={<TodoList />} />
+            <Route path="/" element={<TodoList />}></Route>
             <Route path="/items/:id" element={<TodoItemPage />}>
               Details of an item here!
             </Route>
-            <Route path="*">
+            {/* <Route path="*">
               <p>Oops, that URL not found! 404 </p>
-            </Route>
+            </Route> */}
           </React.Fragment>
         </Routes>
       </main>
