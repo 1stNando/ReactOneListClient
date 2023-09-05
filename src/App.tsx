@@ -21,7 +21,7 @@ export function App() {
       <main>
         <Routes>
           <React.Fragment>
-            <Route path="/" element={<TodoList />}></Route>
+            <Route path="/" element={<TodoList />} />
             <Route path="/items/:id" element={<TodoItemPage />}>
               Details of an item here!
             </Route>
