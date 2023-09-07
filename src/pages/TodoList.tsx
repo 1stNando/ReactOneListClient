@@ -1,33 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { TodoItem } from '../components/TodoItemProps'
 import { TodoItemType } from '../App'
+import { useQuery } from 'react-query'
+//import { TodoItemType } from '../App'
+
+async function getTodos() {
+  const response = await axios.get<TodoItemType[]>(
+    'https://one-list-api.herokuapp.com/items?access_token=cohort25'
+  )
+  return response.data
+}
 
 export function TodoList() {
+  const { data: todoItems = [], refetch } = useQuery('todos', getTodos)
+
   // Step 2, after static implementation, set the state.
-  const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
+  //const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
   // 2nd state to set. Manages input text from user.
   const [newTodoText, setNewTodoText] = useState('')
 
-  function loadAllTheItems() {
-    // Our async function inside!Coffee16oz
-    async function fetchListOfItems() {
-      const response = await axios.get(
-        'https://one-list-api.herokuapp.com/items?access_token=cohort25'
-      )
+  // function loadAllTheItems() {
+  //   // Our async function inside!Coffee16oz
+  //   async function fetchListOfItems() {
+  //     const response = await axios.get(
+  //       'https://one-list-api.herokuapp.com/items?access_token=cohort25'
+  //     )
 
-      if (response.status === 200) {
-        setTodoItems(response.data)
-        // Adds ability for input text to go away after pressing enter.New item and clear.
-        setNewTodoText('')
-      }
-    }
-    fetchListOfItems()
-  }
+  //     if (response.status === 200) {
+  //       setTodoItems(response.data)
+  //       // Adds ability for input text to go away after pressing enter.New item and clear.
+  //       setNewTodoText('')
+  //     }
+  //   }
+  //   fetchListOfItems()
+  // }
 
   // Don't forget empty array!
   // useEffect has a non-async function, Loads our data ONCE.
-  useEffect(loadAllTheItems, [])
+  // useEffect(loadAllTheItems, [])
 
   async function handleCreateNewTodoItem() {
     const body = {
@@ -39,7 +50,7 @@ export function TodoList() {
       body
     )
     if (response.status === 201) {
-      loadAllTheItems()
+      refetch()
 
       // This illustrates how to get data back completely instead of appending.
       // const response = await axios.get(
@@ -62,7 +73,7 @@ export function TodoList() {
             <TodoItem
               key={todoItem.id}
               todoItem={todoItem}
-              reloadItems={loadAllTheItems}
+              reloadItems={() => refetch}
             />
           )
         })}
