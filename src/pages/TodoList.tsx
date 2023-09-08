@@ -1,25 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import { TodoItem } from '../components/TodoItem'
-import { TodoItemType } from '../App'
 import { useMutation, useQuery } from 'react-query'
+import { createNewTodoItem, getTodos } from '../api.ts/api'
 //import { TodoItemType } from '../App'
-
-async function getTodos() {
-  const response = await axios.get<TodoItemType[]>(
-    'https://one-list-api.herokuapp.com/items?access_token=cohort25'
-  )
-  return response.data
-}
-
-// Mutation of data. Part 1.
-async function createNewTodoItem(newTodoText: string) {
-  const response = await axios.post(
-    'https://one-list-api.herokuapp.com/items?access_token=cohort25',
-    { item: { text: newTodoText } }
-  )
-  return response
-}
 
 export function TodoList() {
   const { data: todoItems = [], refetch: refetchTodos } = useQuery(
@@ -36,9 +19,6 @@ export function TodoList() {
         refetchTodos()
 
         setNewTodoText('')
-      },
-      onError: function () {
-        // Do something
       },
     }
   )
@@ -61,7 +41,7 @@ export function TodoList() {
           )
         })}
       </ul>
-      {/* <Form> enables on submit "enter". Subtle but important for input. All forms by default want to be submitted. We need somewhere to submit to... */}
+
       <form
         onSubmit={function (event) {
           // This says, please form don't do your usual behavior to avoid re-render.

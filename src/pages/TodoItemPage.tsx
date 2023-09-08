@@ -1,26 +1,11 @@
-import axios from 'axios'
 import React from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { TodoItemType } from '../App'
 import { Link } from 'react-router-dom'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
+import { deleteOneTodo, getOneTodo } from '../api.ts/api'
 
-async function getOneTodo(id: string) {
-  const response = await axios.get<TodoItemType>(
-    `https://one-list-api.herokuapp.com/items/${id}?access_token=cohort25`
-  )
-  return response.data
-}
-
-// Delete data.
-async function deleteOneTodo(id: string) {
-  const response = await axios.delete(
-    `https://one-list-api.herokuapp.com/items/${id}?access_token=cohort25`
-  )
-  return response
-}
-
-// Null object pattern
+// Null Object Pattern
 const EmptyTodoItem: TodoItemType = {
   id: undefined,
   text: '',
