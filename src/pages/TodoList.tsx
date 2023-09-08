@@ -48,56 +48,6 @@ export function TodoList() {
   // 2nd state to set. Manages input text from user.
   const [newTodoText, setNewTodoText] = useState('')
 
-  // Mutation of data, part 3.
-  // async function handleCreateNewTodoItem() {
-  //   todoItemMutation.mutate(newTodoText)
-  // }
-
-  // function loadAllTheItems() {
-  //   // Our async function inside!Coffee16oz
-  //   async function fetchListOfItems() {
-  //     const response = await axios.get(
-  //       'https://one-list-api.herokuapp.com/items?access_token=cohort25'
-  //     )
-
-  //     if (response.status === 200) {
-  //       setTodoItems(response.data)
-  //       // Adds ability for input text to go away after pressing enter.New item and clear.
-  //       setNewTodoText('')
-  //     }
-  //   }
-  //   fetchListOfItems()
-  // }
-
-  // Don't forget empty array!
-  // useEffect has a non-async function, Loads our data ONCE.
-  // useEffect(loadAllTheItems, [])
-
-  // async function handleCreateNewTodoItem() {
-  //   const body = {
-  //     item: { text: newTodoText },
-  //   }
-  //   console.log(`Time to create a todo: ${newTodoText}`)
-  //   const response = await axios.post(
-  //     'https://one-list-api.herokuapp.com/items?access_token=cohort25',
-  //     body
-  //   )
-  //   if (response.status === 201) {
-  //     refetch()
-
-  //     // This illustrates how to get data back completely instead of appending.
-  //     // const response = await axios.get(
-  //     //   'https://one-list-api.herokuapp.com/items?access_token=cohort25'
-  //     // )
-
-  //     // if (response.status === 200) {
-  //     //   setTodoItems(response.data)
-  //     //   // Adds ability for input text to go away after pressing enter.New item and clear.
-  //     //   setNewTodoText('')
-  //     // }
-  //   }
-  // }
-
   return (
     <React.Fragment>
       <ul>
