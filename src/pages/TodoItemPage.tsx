@@ -12,6 +12,14 @@ async function getOneTodo(id: string) {
   return response.data
 }
 
+// Delete data.
+async function deleteOneTodo(id: string) {
+  const response = await axios.delete(
+    `https://one-list-api.herokuapp.com/items/${id}?access_token=cohort25`
+  )
+  return response
+}
+
 // Null object pattern
 const EmptyTodoItem: TodoItemType = {
   id: undefined,
@@ -31,16 +39,12 @@ export function TodoItemPage() {
     () => getOneTodo(params.id)
   )
 
-  async function deleteTodoItem() {
-    const response = await axios.delete(
-      `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort25`
-    )
-
-    if (response.status === 204) {
-      // Redirect to the homepage
-      history('/')
-    }
-  }
+  const deleteMutation = useMutation((id: string) => deleteOneTodo(id), {
+    onSuccess: function () {
+      // Send the user back to the homepage
+      history.push('/')
+    },
+  })
   // Since the default state has an id that is undefined
   // render NOTHING until there is an id -- that only happens
   // once we load from the API.
@@ -56,7 +60,13 @@ export function TodoItemPage() {
       <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
       {/* <p>Created: {todoItem.created_at}</p>
       <p>Updated: {todoItem.updated_at}</p> */}
-      <button onClick={deleteTodoItem}>Delete</button>
+      <button
+        onClick={function () {
+          deleteMutation.mutate(params.id)
+        }}
+      >
+        Delete
+      </button>
     </div>
   )
 }
